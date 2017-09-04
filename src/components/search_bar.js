@@ -1,7 +1,7 @@
 /* Search bar at the top
 */
 
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 
 // Define the search class component
 class SearchBar extends Component {
@@ -19,17 +19,20 @@ class SearchBar extends Component {
     /* Every class needs a render() method
     */
     render() {
-        // Define onChange handler for the input
-        // Set state on input change
-        // Input is a controlled component
+        // Define onChange handler for the input Set state on input change Input is a
+        // controlled component
         return (
-            <div>
+            <div className="search-bar">
                 <input
                     value={this.state.term}
-                    onChange={event => this.setState({ term: event.target.value })
-                    } />
+                    onChange={event => this.onInputChange(event.target.value)}/>
             </div>
         );
+    }
+
+    onInputChange(term) {
+        this.setState({term});
+        this.props.onSearchTermChange(term);
     }
 }
 
